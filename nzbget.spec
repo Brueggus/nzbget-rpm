@@ -31,6 +31,7 @@ Source13:       nzbget.sysusers
 Patch0:         0001-local-vendor-sources.patch
 Patch1:         0002-std-filesystem-error-code.patch
 Patch2:         0003-boost-static-pic.patch
+Patch3:         0004-boost-json-string-view.patch
 
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -169,10 +170,6 @@ mkdir -p %{buildroot}/var/log/%{name}
 
 # Scripts
 mkdir -p %{buildroot}/%{_datadir}/%{name}/scripts
-install -p -m 755 scripts/EMail.py \
-   %{buildroot}/%{_datadir}/%{name}/scripts/EMail.py
-install -p -m 755 scripts/Logger.py \
-   %{buildroot}/%{_datadir}/%{name}/scripts/Logger.py
 
 # Extra Useful Scripts
 install -p -D -m 755 %{SOURCE4} \

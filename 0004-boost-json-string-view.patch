@@ -1,0 +1,12 @@
+diff --git a/daemon/util/Json.cpp b/daemon/util/Json.cpp
+--- a/daemon/util/Json.cpp
++++ b/daemon/util/Json.cpp
+@@ -44,7 +44,7 @@ namespace Json
+ 	std::optional<JsonValue> Deserialize(std::string_view jsonStr) noexcept
+ 	{
+ 		ErrorCode ec;
+-		JsonValue value = parse(jsonStr, ec);
++		JsonValue value = parse(boost::json::string_view(jsonStr.data(), jsonStr.size()), ec);
+ 
+ 		if (ec) return std::nullopt;
+ 
