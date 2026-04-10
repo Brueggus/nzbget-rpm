@@ -4,6 +4,10 @@ Release:        1%{?dist}
 Summary:        An Efficient Usenet Downloader
 License:        GPL-2.0-or-later
 URL:            https://github.com/nzbgetcom/nzbget
+%if 0%{?rhel} == 8
+%undefine _debugsource_packages
+%endif
+
 Source0:        https://github.com/nzbgetcom/nzbget/archive/refs/tags/v%{version}.tar.gz#/nzbget-%{version}.tar.gz
 Source1:        nzbget.systemd
 Source2:        nzbget.xml
@@ -29,9 +33,6 @@ Source12:       https://github.com/boostorg/boost/releases/download/boost-1.84.0
 Source13:       nzbget.sysusers
 
 Patch0:         0001-local-vendor-sources.patch
-Patch1:         0002-std-filesystem-error-code.patch
-Patch2:         0003-boost-static-pic.patch
-Patch3:         0004-boost-json-string-view.patch
 
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -43,7 +44,7 @@ BuildRequires:  zlib-devel
 BuildRequires:  systemd-rpm-macros
 %endif
 
-%if 0%{?rhel} == 8
+%if 0%{?rhel} && 0%{?rhel} <= 9
 BuildRequires:  perl-interpreter
 Provides:       bundled(boost) = 1.84.0
 %else
@@ -74,7 +75,7 @@ mv vendor/rapidyenc-* vendor/rapidyenc
 tar -xf %{SOURCE11} -C vendor
 mv vendor/par2cmdline-turbo-* vendor/par2cmdline-turbo
 
-%if 0%{?rhel} == 8
+%if 0%{?rhel} && 0%{?rhel} <= 9
 tar -xf %{SOURCE12} -C vendor
 mv vendor/boost-* vendor/boost
 %endif
@@ -90,7 +91,7 @@ for file in %{SOURCE4} %{SOURCE5} %{SOURCE6} %{SOURCE7} %{SOURCE8} %{SOURCE9}; d
 done
 
 %build
-%if 0%{?rhel} == 8
+%if 0%{?rhel} && 0%{?rhel} <= 9
 %cmake \
    -DENABLE_TESTS=OFF \
    -DRAPIDYENC_SOURCE_DIR=%{_builddir}/%{name}-%{version}/vendor/rapidyenc \
