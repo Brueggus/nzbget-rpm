@@ -1,0 +1,3 @@
+g nzbget - -
+u nzbget - "NZBGet account" /var/lib/nzbget /sbin/nologin
+m nzbget nzbget

@@ -1,0 +1,20 @@
+[Unit]
+Description=NZBGet Daemon
+Documentation=https://nzbget.com/documentation/
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=forking
+User=nzbget
+Group=nzbget
+UMask=0002
+WorkingDirectory=/var/lib/nzbget
+ExecStart=/usr/bin/nzbget -c /etc/nzbget.conf -D
+ExecStop=/usr/bin/nzbget -c /etc/nzbget.conf -Q
+ExecReload=/usr/bin/nzbget -c /etc/nzbget.conf -O
+KillMode=process
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
