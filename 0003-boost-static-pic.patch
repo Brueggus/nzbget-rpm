@@ -1,24 +1,20 @@
 diff --git a/cmake/boost.cmake b/cmake/boost.cmake
 --- a/cmake/boost.cmake
 +++ b/cmake/boost.cmake
-@@ -27,7 +27,7 @@ if(DEFINED BOOST_SOURCE_DIR_LOCAL)
- 		UPDATE_COMMAND ""
+@@ -29,7 +29,7 @@ if(DEFINED BOOST_SOURCE_DIR_LOCAL)
  		BUILD_IN_SOURCE TRUE
  		BUILD_BYPRODUCTS ${BOOST_BYPRODUCTS}
--		CONFIGURE_COMMAND ./bootstrap.sh --with-libraries=${BOOST_NEEDED_COMPONENTS_WITH_COMMAS} --prefix=${BOOST_INSTALL_DIR}
+ 		CONFIGURE_COMMAND ./bootstrap.sh --with-libraries=${BOOST_NEEDED_COMPONENTS_WITH_COMMAS} --prefix=${BOOST_INSTALL_DIR}
 -		BUILD_COMMAND ./b2 link=static variant=${BOOST_BUILD_TYPE} install
-+		CONFIGURE_COMMAND ./bootstrap.sh --with-libraries=${BOOST_NEEDED_COMPONENTS_WITH_COMMAS} --prefix=${BOOST_INSTALL_DIR}
 +		BUILD_COMMAND ./b2 cflags=-fPIC cxxflags=-fPIC link=static variant=${BOOST_BUILD_TYPE} install
  		INSTALL_COMMAND ""
  	)
  else()
-@@ -41,7 +41,7 @@ else()
- 		USES_TERMINAL_UPDATE TRUE
+@@ -46,7 +46,7 @@ else()
  		USES_TERMINAL_BUILD TRUE
  		BUILD_BYPRODUCTS ${BOOST_BYPRODUCTS}
--		CONFIGURE_COMMAND ./bootstrap.sh --with-libraries=${BOOST_NEEDED_COMPONENTS_WITH_COMMAS} --prefix=${BOOST_INSTALL_DIR}
+ 		CONFIGURE_COMMAND ./bootstrap.sh --with-libraries=${BOOST_NEEDED_COMPONENTS_WITH_COMMAS} --prefix=${BOOST_INSTALL_DIR}
 -		BUILD_COMMAND ./b2 link=static variant=${BOOST_BUILD_TYPE} install
-+		CONFIGURE_COMMAND ./bootstrap.sh --with-libraries=${BOOST_NEEDED_COMPONENTS_WITH_COMMAS} --prefix=${BOOST_INSTALL_DIR}
 +		BUILD_COMMAND ./b2 cflags=-fPIC cxxflags=-fPIC link=static variant=${BOOST_BUILD_TYPE} install
  		INSTALL_COMMAND ""
  	)
