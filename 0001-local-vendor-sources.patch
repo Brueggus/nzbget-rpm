@@ -58,7 +58,7 @@ diff --git a/cmake/boost.cmake b/cmake/boost.cmake
 diff --git a/cmake/rapidyenc.cmake b/cmake/rapidyenc.cmake
 --- a/cmake/rapidyenc.cmake
 +++ b/cmake/rapidyenc.cmake
-@@ -48,19 +48,32 @@
+@@ -48,19 +48,34 @@
  	)
  endif()
  
@@ -86,6 +86,7 @@ diff --git a/cmake/rapidyenc.cmake b/cmake/rapidyenc.cmake
 +		CMAKE_ARGS ${CMAKE_ARGS}
 +		INSTALL_COMMAND ""
 +	)
++	set(RAPIDYENC_INCLUDE_DIR ${RAPIDYENC_SOURCE_DIR})
 +else()
 +	ExternalProject_add(
 +		rapidyenc
@@ -100,10 +101,12 @@ diff --git a/cmake/rapidyenc.cmake b/cmake/rapidyenc.cmake
 +		CMAKE_ARGS		 ${CMAKE_ARGS}
 +		INSTALL_COMMAND	""
 +	)
++	set(RAPIDYENC_INCLUDE_DIR ${RAPIDYENC_ROOT}/rapidyenc)
 +endif()
  
  set(LIBS ${LIBS} ${RAPIDYENC_LIBS})
- set(INCLUDES ${INCLUDES} ${RAPIDYENC_ROOT}/rapidyenc)
+-set(INCLUDES ${INCLUDES} ${RAPIDYENC_ROOT}/rapidyenc)
++set(INCLUDES ${INCLUDES} ${RAPIDYENC_INCLUDE_DIR})
 diff --git a/cmake/par2-turbo.cmake b/cmake/par2-turbo.cmake
 --- a/cmake/par2-turbo.cmake
 +++ b/cmake/par2-turbo.cmake
