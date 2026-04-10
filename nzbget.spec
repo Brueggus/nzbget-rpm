@@ -29,6 +29,8 @@ Source12:       https://github.com/boostorg/boost/releases/download/boost-1.84.0
 Source13:       nzbget.sysusers
 
 Patch0:         0001-local-vendor-sources.patch
+Patch1:         0002-std-filesystem-error-code.patch
+Patch2:         0003-boost-static-pic.patch
 
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
