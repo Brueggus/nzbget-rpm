@@ -110,7 +110,7 @@ diff --git a/cmake/rapidyenc.cmake b/cmake/rapidyenc.cmake
 diff --git a/cmake/par2-turbo.cmake b/cmake/par2-turbo.cmake
 --- a/cmake/par2-turbo.cmake
 +++ b/cmake/par2-turbo.cmake
-@@ -53,19 +53,32 @@
+@@ -53,19 +53,34 @@
  	)
  endif()
  
@@ -138,6 +138,7 @@ diff --git a/cmake/par2-turbo.cmake b/cmake/par2-turbo.cmake
 +		CMAKE_ARGS ${CMAKE_ARGS}
 +		INSTALL_COMMAND ""
 +	)
++	set(PAR2_INCLUDE_DIR ${PAR2_TURBO_SOURCE_DIR}/include)
 +else()
 +	ExternalProject_add(
 +		par2-turbo
@@ -152,7 +153,9 @@ diff --git a/cmake/par2-turbo.cmake b/cmake/par2-turbo.cmake
 +		CMAKE_ARGS		 ${CMAKE_ARGS}
 +		INSTALL_COMMAND	""
 +	)
++	set(PAR2_INCLUDE_DIR ${PAR2_ROOT}/par2-turbo/include)
 +endif()
  
  set(LIBS ${LIBS} ${PAR2_LIBS})
- set(INCLUDES ${INCLUDES} ${PAR2_ROOT}/par2-turbo/include)
+-set(INCLUDES ${INCLUDES} ${PAR2_ROOT}/par2-turbo/include)
++set(INCLUDES ${INCLUDES} ${PAR2_INCLUDE_DIR})

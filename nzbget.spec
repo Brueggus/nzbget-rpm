@@ -40,11 +40,12 @@ BuildRequires:  zlib-devel
 BuildRequires:  systemd-rpm-macros
 %endif
 
-%if 0%{?rhel} && 0%{?rhel} <= 9
+%if 0%{?rhel} == 8
 BuildRequires:  perl-interpreter
 Provides:       bundled(boost) = 1.84.0
 %else
 BuildRequires:  boost-devel
+BuildRequires:  boost-json
 %endif
 
 Provides:       bundled(rapidyenc) = 1.1.1-20260217
@@ -70,7 +71,7 @@ mv vendor/rapidyenc-* vendor/rapidyenc
 tar -xf %{SOURCE11} -C vendor
 mv vendor/par2cmdline-turbo-* vendor/par2cmdline-turbo
 
-%if 0%{?rhel} && 0%{?rhel} <= 9
+%if 0%{?rhel} == 8
 tar -xf %{SOURCE12} -C vendor
 mv vendor/boost-* vendor/boost
 %endif
@@ -86,7 +87,7 @@ for file in %{SOURCE4} %{SOURCE5} %{SOURCE6} %{SOURCE7} %{SOURCE8} %{SOURCE9}; d
 done
 
 %build
-%if 0%{?rhel} && 0%{?rhel} <= 9
+%if 0%{?rhel} == 8
 %cmake \
    -DENABLE_TESTS=OFF \
    -DRAPIDYENC_SOURCE_DIR=%{_builddir}/%{name}-%{version}/vendor/rapidyenc \
