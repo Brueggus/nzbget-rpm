@@ -4,9 +4,7 @@ Release:        1%{?dist}
 Summary:        An Efficient Usenet Downloader
 License:        GPL-2.0-or-later
 URL:            https://github.com/nzbgetcom/nzbget
-%if 0%{?rhel} == 8
-%undefine _debugsource_packages
-%endif
+%global _empty_manifest_terminate_build 0
 
 Source0:        https://github.com/nzbgetcom/nzbget/archive/refs/tags/v%{version}.tar.gz#/nzbget-%{version}.tar.gz
 Source1:        nzbget.systemd
@@ -33,6 +31,7 @@ Source12:       https://github.com/boostorg/boost/releases/download/boost-1.84.0
 Source13:       nzbget.sysusers
 
 Patch0:         0001-local-vendor-sources.patch
+Patch1:         0003-boost-static-pic.patch
 
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
