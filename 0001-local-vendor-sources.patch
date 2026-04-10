@@ -156,6 +156,6 @@ diff --git a/cmake/par2-turbo.cmake b/cmake/par2-turbo.cmake
 +	set(PAR2_INCLUDE_DIR ${PAR2_ROOT}/par2-turbo/include)
 +endif()
  
-set(LIBS ${LIBS} ${PAR2_LIBS})
+ set(LIBS ${LIBS} ${PAR2_LIBS})
 -set(INCLUDES ${INCLUDES} ${PAR2_ROOT}/par2-turbo/include)
 +set(INCLUDES ${INCLUDES} ${PAR2_INCLUDE_DIR})
